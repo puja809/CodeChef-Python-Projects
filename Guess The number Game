@@ -1,0 +1,11 @@
+import random
+n=random.randint(1,100)
+while True:
+    a=int(input('Enter a number:'))
+    if a==n:
+        print('You guessed it right!!')
+        break
+    elif abs(n-a)<=10:
+        print('Hot')
+    elif abs(n-a)>10 or abs(n-a)<10:
+        print('Cold')
