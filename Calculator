@@ -1,9 +1,11 @@
 while True:
-    print('\nWelcome to Calculator')
-    print('\nChoose One operation:')
-    print('1.Addition')
-    print('2.Substraction')
-    print('3.Exit')
+    print("""Welcome to calculator
+    
+    Choose One Operation:
+    1.Addition
+    2.Substraction
+    3.Exit
+    """)
     n=int(input())
     if n==3:
         break
