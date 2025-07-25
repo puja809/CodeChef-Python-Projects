@@ -1,0 +1,17 @@
+while True:
+    print('\nWelcome to Calculator')
+    print('\nChoose One operation:')
+    print('1.Addition')
+    print('2.Substraction')
+    print('3.Exit')
+    n=int(input())
+    if n==3:
+        break
+    elif n==1:
+        num1=input('Enter number 1:')
+        num2=input('Enter number 2:')
+        print('\nSum is',int(num1)+int(num2))
+    elif n==2:
+        num1=input('Enter number 1:')
+        num2=input('Enter number 2:')
+        print('\nSum is',int(num1)-int(num2))
