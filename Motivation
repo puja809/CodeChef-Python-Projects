@@ -1,0 +1,16 @@
+#https://www.codechef.com/practice/course/1to2stars/LP1TO201/problems/IMDB
+# cook your dish here
+t=int(input())
+temp_r=[]
+for i in range(t):
+    n,x=map(int,input().split())
+    for j in range(n):
+        s,r=map(int,input().split())
+        if s>x:
+            continue
+        else:
+            temp_r.append(r)
+            
+            
+    print(max(temp_r))
+    temp_r=[]
