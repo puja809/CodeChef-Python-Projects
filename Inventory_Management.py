@@ -17,43 +17,56 @@ def add_product():
     print(f"Product '{name}' added successfully!\n")
 
 
-# Complete the below function---------------------
 def view_inventory():
-    header = 'Name' + ' ' * 10 + 'Quantity' + ' ' * 10 + 'Price'
-    if inventory == {}:
-        print("Inventory is empty!")
+    if not inventory:
+        print("Inventory is empty.")
         return
+    print("Current Inventory:")
+    print("Name\tQuantity\tPrice")
+    for name, details in inventory.items():
+        print(f"{name}\t{details[0]}\t${details[1]:.2f}")
+    print()
+
+
+def update_product():
+    name = input("Enter product name to update: ")
+    if name in inventory:
+        quantity = int(input("Enter new quantity: "))
+        inventory[name][0] = quantity
+        print(f"Updated {name} stock to {quantity}\n")
     else:
-        print('Current Inventory:')
-        print(header)
-        for key, value in list(inventory.items()):
-            key_len = len('Name') + 10 - len(key)
-            val_len = len('Quantity') + 10 - len(str(value[0]))
-            print(f"{key}{key_len * ' '}{value[0]}{val_len * ' '}${value[1]:<10.2f}")
-
-
-# --------------------------------------------------
-
-def update_stock():
-    print("update_stock")
+        print("Product not found!\n")
 
 
 def delete_product():
-    print("delete_product")
+    name = input("Enter product name to delete: ")
+    if name in inventory:
+        del inventory[name]
+        print(f"Deleted '{name}' from inventory\n")
+    else:
+        print("Product not found!\n")
 
 
 def search_product():
-    # print("search_product")
-    name=input('Enter product name to search: ')
+    name = input("Enter product name to search: ")
     if name in inventory:
-        print(f'{name}: Quantity={inventory[name][0]}, Price=${inventory[name][1]:.2f}')
+        print(f"{name}: Quantity={inventory[name][0]}, Price=${inventory[name][1]:.2f}\n")
     else:
-        print('Product not found!')
+        print("Product not found!\n")
 
 
+# Complete the below function ------------------
 def save_inventory():
-    print("save_inventory")
+    file = 'inventory.csv'
+    with open(file, 'w', newline="") as f:
+        writer = csv.writer(f)
+        writer.writerow(["Product Name", "Quantity", "Price"])
+        for key, value in inventory.items():
+            writer.writerow([key, value[0], value[1]])
+    print("Inventory saved to inventory.csv\n")
 
+
+# ----------------------------------------------
 
 if __name__ == "__main__":
 
@@ -67,7 +80,7 @@ if __name__ == "__main__":
         elif choice == "2":
             view_inventory()
         elif choice == "3":
-            update_stock()
+            update_product()
         elif choice == "4":
             delete_product()
         elif choice == "5":
